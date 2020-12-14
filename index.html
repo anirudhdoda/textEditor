@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text Editor</title>
+</head>
+<body>
+    <button  onclick="execComm('bold')">Bold</button>
+    <button  onclick="execComm('italic')">Italic</button>
+    <button  onclick="execComm('underline')">Underline</button>
+    <button  onclick="execComm('strikeThrough')">StrikeThrough</button>
+    <button  onclick="execComm('justifyLeft')">Align Left</button>
+    <button  onclick="execComm('justifyCenter')">Align Center</button>
+    <button  onclick="execComm('justifyRight')">Align Right</button>
+    <button  onclick="execComm('justifyFull')">Align Justify</button>
+    <button  onclick="execComm('cut')">Cut</button>
+    <button  onclick="execComm('copy')">Copy</button>
+    <button  onclick="execComm('indent')">Indent</button>
+    <button  onclick="execComm('outdent')">Dedent</button>
+    <button  onclick="execComm('subscript')">Subscript</button>
+    <button  onclick="execComm('superscript')">SuperScript</button>
+    <button  onclick="execComm('undo')">Undo</button>
+    <button  onclick="execComm('redo')">Redo</button>
+    <button  onclick="execComm('insertUnorderedList')">Unordered list</button>
+    <button  onclick="execComm('insertOrderedList')">Ordered list</button>
+    <button  onclick="execComm('insertParagraph')">Paragraph</button>
+    <select onchange="execCommWithArg('formatBlock',this.value)">
+        <option value='H1'>H1</option>
+        <option value='H2'>H2</option>
+        <option value='H3'>H3</option>
+        <option value='H4'>H4</option>
+        <option value='H5'>H5</option>
+        <option value='H6'>H6</option>
+    </select>
+    <button  onclick="execComm('insertHorizontalRule')">HR</button>
+    <button  onclick="execCommWithArg('createLink',prompt('Enter Url','http://'));">Link</button>
+    <button  onclick="execComm('unlink')">Unlink</button>
+
+    <br>
+    <select  onchange="execCommWithArg('fontName',this.value)">
+        <option value='Arials'>Arials</option>
+        <option value='Comic Sans MS'>Comic Sans MS</option>
+        <option value='Courier'>Courier</option>
+        <option value='Georgia'>Georgia</option>
+        <option value='Tahoma'>Tahoma</option>
+        <option value='Times New Roman'>Times New Roman</option>
+        <option value='Verdana'>Verdana</option>
+    </select>
+    <select  onchange="execCommWithArg('fontSize',this.value)">
+        <option value='1'>1</option>
+        <option value='2'>2</option>
+        <option value='3'>3</option>
+        <option value='4'>4</option>
+        <option value='5'>5</option>
+        <option value='6'>6</option>
+        <option value='7'>7</option>
+    </select>
+Fore Color:<input type='color'  onchange="execCommWithArg('fontColor',this.value)">
+Background:<input type='color'  onchange="execCommWithArg('hiliteColor',this.value)">
+<button  onclick="execCommWithArg('insertImage',prompt('Enter url:-',''))">Add Image</button>
+<button  onclick="execComm('selectAll')">Select All</button>
+<div contenteditable id='textField'>
+Try making some of this text bold...
+</div>
+<script>
+    var showingSourceCode=false;
+    var isEditMode=true;
+    function execComm(command)
+    {
+        document.execCommand(command,false,null);
+    }
+    function execCommWithArg(command,value)
+    {
+        document.execCommand(command,false,value);
+    }
+</script>
+</body>
+</html>
